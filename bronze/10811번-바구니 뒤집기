@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[] box = new int[n];
+		int[] tmp = new int[n];
+		int i = 0;
+		int j = 0;
+		for(int a=0; a<box.length; a++) {
+			box[a] = a+1;
+			tmp[a] = a+1;
+		}
+		for(int a=0; a<m; a++) {
+			i = sc.nextInt();
+			j = sc.nextInt();
+			for(int b=i, c=j; b<=j; b++, c--) {
+				box[b-1] = tmp[c-1];
+			}
+			for(int d=0; d<box.length; d++) {
+				tmp[d] = box[d];
+			}
+			
+		}
+		for(int a=0; a<box.length; a++) {
+			System.out.print(box[a]+" ");
+		}
+	}
+}
