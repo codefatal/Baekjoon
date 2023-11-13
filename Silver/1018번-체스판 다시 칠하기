@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int y = sc.nextInt(); sc.nextLine();
+		char[][] chess = new char[x][y];
+		int draw1 = 0;
+		int draw2 = 0;
+		int min = Integer.MAX_VALUE;
+		int min2 = Integer.MAX_VALUE;
+		String chessBoard = "";
+		for(int i=0; i<x; i++) {
+			chessBoard = sc.nextLine();
+			for(int j=0; j<y; j++) {
+				chess[i][j] = chessBoard.charAt(j);
+			}
+		}
+		for(int i=0; i<x-7; i++) {
+			for(int j=0; j<y-7; j++) {
+				draw1 = 0;
+				draw2 = 0;
+				for(int a=i; a<i+8; a++) {
+					for(int b=j; b<j+8; b++) {
+						if((a+b)%2==0) {
+							if(chess[a][b]!='B') {
+								draw1++;
+							}
+							if(chess[a][b]!='W') {
+								draw2++;
+							}
+						} else {
+							if(chess[a][b]!='W') {
+								draw1++;
+							}
+							if(chess[a][b]!='B') {
+								draw2++;
+							}							
+						}
+					}
+				}
+				min = Math.min(draw1, draw2);
+				min2 = Math.min(min2, min);
+			}
+		}
+		System.out.println(min2);
+	}
+}
