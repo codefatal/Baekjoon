@@ -1,0 +1,19 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		BigInteger N = sc.nextBigInteger();
+		BigInteger M = sc.nextBigInteger();
+		
+		BigInteger div = N.divide(M);
+		BigInteger remain = N.remainder(M);
+		
+		System.out.println(div);
+		System.out.println(remain);
+		sc.close();
+	}
+	
+}
