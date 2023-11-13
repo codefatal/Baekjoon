@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] math = new int[6];
+		int[] mathCopy = new int[6];
+		for(int i=0; i<math.length; i++) {
+			math[i] = sc.nextInt();
+			mathCopy[i] = math[i];
+		}
+		int x = 0;
+		int y = 0;
+		
+		int sumX = 0;
+		int sumY = 0;
+		int sum = 0;
+		
+		for(int i=0; i<3; i++) {
+			math[i]*=mathCopy[3];
+		}
+		for(int i=3; i<math.length; i++) {
+			math[i]*=mathCopy[0];
+		}
+		sumX = math[0]-math[3];
+		sumY = math[1]-math[4];
+		sum = math[2]-math[5];
+		y=sum/sumY;
+		
+		for(int i=0; i<math.length; i++) {
+			math[i] = mathCopy[i];
+		}
+		for(int i=0; i<3; i++) {
+			math[i]*=mathCopy[4];
+		}
+		for(int i=3; i<math.length; i++) {
+			math[i]*=mathCopy[1];
+		}
+		sumX = math[0]-math[3];
+		sumY = math[1]-math[4];
+		sum = math[2]-math[5];
+		x=sum/sumX;
+		
+		System.out.println(x+" "+y);
+	}
+}
