@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		int rev1 = 0;
+		int rev2 = 0;
+		for(int i=2; i>=0; i--) {
+			rev1 += num1%10 * Math.pow(10, i);
+			rev2 += num2%10 * Math.pow(10, i);
+			num1/=10;
+			num2/=10;
+		}
+		if(rev1>rev2) {
+			System.out.println(rev1);
+		} else {
+			System.out.println(rev2);
+		}
+		
+	}
+}
