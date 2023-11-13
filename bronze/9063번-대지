@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[][] point = new int[n][2];
+		int maxX = Integer.MIN_VALUE;
+		int minX = Integer.MAX_VALUE;
+		int maxY = Integer.MIN_VALUE;
+		int minY = Integer.MAX_VALUE;
+		int answer = 0;
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<2; j++) {
+				point[i][j] = sc.nextInt();
+			}
+		}
+		for(int i=0; i<n; i++) {
+			maxX = Math.max(maxX, point[i][0]);
+			minX = Math.min(minX, point[i][0]);
+			maxY = Math.max(maxY, point[i][1]);
+			minY = Math.min(minY, point[i][1]);
+		}
+		answer = (maxX-minX)*(maxY-minY);
+		System.out.println(answer);
+	}
+}
