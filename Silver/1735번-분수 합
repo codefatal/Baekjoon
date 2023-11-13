@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static Map<String, String> map = new HashMap<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	// 주어진 입력정보 받기
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		List<Integer> numArr = new ArrayList<>();
+		List<Integer> denoArr = new ArrayList<>();
+		
+		for(int i=0; i<2; i++) {
+			StringTokenizer st = new StringTokenizer(bf.readLine());
+			numArr.add(Integer.parseInt(st.nextToken()));
+			denoArr.add(Integer.parseInt(st.nextToken()));
+		}
+		
+        int deno = eucd(Math.max(denoArr.get(0), denoArr.get(1)), Math.min(denoArr.get(0), denoArr.get(1)));
+        int denoMin1 = denoArr.get(0) / deno;
+        int denoMin2 = denoArr.get(1) / deno;
+        int denoMax = denoMin1 * denoMin2 * deno;
+        
+        int result = numArr.get(0)*(denoMax/denoArr.get(0))+numArr.get(1)*(denoMax/denoArr.get(1));
+        int calcResult = eucd(Math.max(result, denoMax), Math.min(result, denoMax));
+        
+        bw.write(result/calcResult+" "+denoMax/calcResult+"\n");
+        
+        bw.close();
+    }
+    
+    static int eucd(int bn, int sn) {
+    	int r = bn % sn;
+        if (r == 0) {
+            return sn;
+        } else {
+            return eucd(sn, r);
+        }
+    }
+    
+}
