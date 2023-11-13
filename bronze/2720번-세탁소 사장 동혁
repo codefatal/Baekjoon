@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int money = 0;
+		int[] divi = {25, 10, 5, 1};
+		int[] answer = new int[divi.length];
+		for(int i=0; i<n; i++) {
+			money = sc.nextInt();
+			for(int j=0; j<divi.length; j++) {
+				answer[j] = money/divi[j];
+				money%=divi[j];
+			}
+			for(int k=0; k<answer.length; k++) {				
+				System.out.print(answer[k]+" ");
+			}
+			System.out.println();
+		}
+		
+		
+	}
+}
