@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(); sc.nextLine();
+		List<String> list = new ArrayList<>();
+		for(int i=0; i<n; i++) {
+			list.add(sc.nextLine());
+		}
+		List<String> newList = list.stream().distinct().collect(Collectors.toList());
+		Comparator<String> c = new Comparator<String>() {
+			public int compare(String s1, String s2) {
+				return Integer.compare(s1.length(), s2.length());
+			}
+		};
+		Collections.sort(newList);
+		Collections.sort(newList, c);
+		for(int i=0; i<newList.size(); i++) {
+			System.out.println(newList.get(i));
+		}
+	}
+}
