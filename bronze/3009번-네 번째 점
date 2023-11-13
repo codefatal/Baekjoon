@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[][] point = new int[4][2];
+		int countX = 0;
+		int countY = 0;
+		int tmpX = 0;
+		int tmpY = 0;
+		int aX = 0;
+		int aY = 0;
+		for(int i=0; i<3; i++) {
+			for(int j=0; j<2; j++) {
+				point[i][j] = sc.nextInt();
+			}
+		}
+		for(int i=0; i<3; i++) {
+			tmpX = point[0][0];
+			tmpY = point[0][1];
+			if(tmpX==point[i][0]) {
+				countX++;
+			} else {
+				aX = point[i][0];
+			}
+			if(tmpY==point[i][1]) {
+				countY++;
+			} else {
+				aY = point[i][1];
+			}
+		}
+		if(countX==2) {
+			point[3][0] = aX;
+		} else {
+			point[3][0] = tmpX;			
+		}
+		if(countY==2) {
+			point[3][1] = aY;
+		} else {
+			point[3][1] = tmpY;			
+		}
+		System.out.println(point[3][0]+" "+point[3][1]);
+		
+		
+	}
+}
