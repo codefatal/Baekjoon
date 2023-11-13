@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static Map<String, String> mapN = new HashMap<>();
+	static Map<String, String> mapM = new HashMap<>();
+	static List<String> listN = new ArrayList<>();
+	static List<String> listM = new ArrayList<>();
+	static Map<String, String> calcN = new HashMap<>();
+	static Map<String, String> calcM = new HashMap<>();
+	static Map<String, String> mapResult = new HashMap<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		
+		StringTokenizer numN = new StringTokenizer(bf.readLine());
+		String pNumN = "";
+		for(int i=0; i<n; i++) {
+			pNumN = numN.nextToken();
+			mapN.put(pNumN, pNumN);
+			calcN.put(pNumN, pNumN);
+			listN.add(pNumN);
+		}
+		StringTokenizer numM = new StringTokenizer(bf.readLine());
+		String pNumM = "";
+		for(int i=0; i<m; i++) {
+			pNumM = numM.nextToken();
+			mapM.put(pNumM, pNumM);
+			calcM.put(pNumM, pNumM);
+			listM.add(pNumM);
+		}
+		
+		for(int i=0; i<m; i++) {
+			if(mapN.containsKey(listM.get(i))) {
+				calcN.remove(listM.get(i));
+			}
+		}
+		for(int i=0; i<n; i++) {
+			if(mapM.containsKey(listN.get(i))) {				
+				calcM.remove(listN.get(i));
+			}
+		}
+		
+		bw.write(calcN.size()+calcM.size()+"\n");
+    
+        bw.close();
+    }
+    
+}
