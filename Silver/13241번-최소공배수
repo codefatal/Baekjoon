@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static Map<String, String> map = new HashMap<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		long n = Long.parseLong(st.nextToken());
+		long m = Long.parseLong(st.nextToken());
+		
+        long a = eucd(Math.max(n, m), Math.min(n, m));
+
+        n = n / a;
+        m = m / a;
+
+        long b = n * m * a;
+		
+        bw.write(b+"\n");
+        
+        bw.close();
+    }
+    
+    static long eucd(long bn, long sn) {
+        long r = bn % sn;
+        if (r == 0) {
+            return sn;
+        } else {
+            return eucd(sn, r);
+        }
+    }
+    
+}
