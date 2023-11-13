@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[][] paper = new int[100][100];
+		int answer = 0;
+		for(int i=0; i<paper.length; i++) {
+			for(int j=0; j<paper[i].length; j++){
+				paper[i][j] = 0;
+			}
+		}
+		int num = sc.nextInt();
+		int height = 0;
+		int width = 0;
+		for(int i=0; i<num; i++) {
+			height = sc.nextInt();
+			width = sc.nextInt();
+			for(int j=0; j<10; j++) {
+				for(int k=0; k<10; k++) {					
+					paper[j+height][k+width] += 1;
+				}
+			}
+		}
+		for(int i=0; i<paper.length; i++) {
+			for(int j=0; j<paper[i].length; j++){
+				if(paper[i][j] >= 1) {
+					answer++;
+				}
+			}
+		}
+		System.out.println(answer);
+		
+		
+	}
+}
