@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int sqX = sc.nextInt();
+		int sqY = sc.nextInt();
+		
+		int minX = Math.min(sqX-x, Math.abs(0-x));
+		int minY = Math.min(sqY-y, Math.abs(0-y));
+		int min = Math.min(minX, minY);
+		System.out.println(min);
+	}
+}
