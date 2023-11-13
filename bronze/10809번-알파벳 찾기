@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		int[] idx = new int[26];
+		for(int j=0; j<idx.length; j++) {
+			idx[j] = s.indexOf(j+97);
+			System.out.print(idx[j]+" ");
+		}
+	}
+}
