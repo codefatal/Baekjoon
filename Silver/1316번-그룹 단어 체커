@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		String[] sArr = new String[n];
+		char[] charArr;
+		int count = 0;
+		int count2 = 0;
+		char prev = 0;
+		int k = 0;
+		for(int i=0; i<n; i++) {
+			k = 0;
+			count2 = 0;
+			prev = 0;
+			sArr[i] = sc.next();
+			charArr = sArr[i].toCharArray();
+			for(char c : charArr) {
+				if(prev!=c) {
+					charArr[k++] = c;
+					prev=c;
+				}
+			}
+			sArr[i] = new String(charArr).substring(0, k);
+			
+			for(int j=0; j<sArr[i].length(); j++) {
+				for(int l=0; l<sArr[i].length(); l++) {
+					if(j!=l && sArr[i].charAt(j)==sArr[i].charAt(l)) {
+						count2++;
+						break;
+					}
+				}
+			}
+			if(count2==0) {				
+				count++;
+			}
+		}
+		System.out.println(count);
+	}
+}
