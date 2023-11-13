@@ -1,0 +1,79 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int subject = 20;
+		int count = 0;
+		String[] title = new String[subject];
+		double[] credit = new double[subject];
+		String[] grade = new String[subject];
+		double[] gradeScore = new double[subject];
+		double[] courses = new double[subject];
+		double creditSum = 0.0;
+		double gradeSum = 0.0;
+		double total = 0.0;
+		for(int i=0; i<subject; i++) {
+			title[i] = sc.next();
+			credit[i] = sc.nextDouble();
+			grade[i] = sc.next();
+			if(grade[i].equals("A+")) {
+				gradeScore[i] = 4.5;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("A0")) {
+				gradeScore[i] = 4.0;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("B+")) {
+				gradeScore[i] = 3.5;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("B0")) {
+				gradeScore[i] = 3.0;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("C+")) {
+				gradeScore[i] = 2.5;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("C0")) {
+				gradeScore[i] = 2.0;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("D+")) {
+				gradeScore[i] = 1.5;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("D0")) {
+				gradeScore[i] = 1.0;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			} else if(grade[i].equals("F")) {
+				gradeScore[i] = 0.0;
+				courses[i] = credit[i] * gradeScore[i];
+				creditSum += credit[i];
+				gradeSum += courses[i];
+				count++;
+			}
+		}
+		total = gradeSum/creditSum;
+		System.out.println(total);
+	}
+}
