@@ -1,0 +1,40 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.*;
+
+public class Main {
+	static Map<String, String> mapN = new HashMap<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		String noear = "";
+		String noeye = "";
+		List<String> lists = new ArrayList<>();
+		for(int i=0; i<n; i++) {
+			noear = bf.readLine();
+			mapN.put(noear, noear);
+		}
+		for(int i=0; i<m; i++) {
+			noeye = bf.readLine();
+			if(mapN.containsKey(noeye)) {
+				lists.add(noeye);				
+			}
+		}
+		Collections.sort(lists);
+		
+		bw.write(lists.size()+"\n");
+		for(int i=0; i<lists.size(); i++) {
+			bw.write(lists.get(i)+"\n");
+		}
+    
+        bw.close();
+    }
+    
+}
