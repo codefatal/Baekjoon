@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static Map<String, String> map = new HashMap<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		String word = st.nextToken();
+		
+		for(int i=0; i<=word.length(); i++) {
+			for(int j=i+1; j<=word.length(); j++) {
+				map.put(word.substring(i, j), word.substring(i, j));
+			}
+		}
+		
+		bw.write(map.size()+"\n");
+		
+        bw.close();
+    }
+    
+}
