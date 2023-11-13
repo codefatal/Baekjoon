@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int total = sc.nextInt();
+		int count = sc.nextInt();
+		String answer = "";
+		int sum = 0;
+		int item = 0;
+		int itemCount = 0;
+		for(int i=0; i<count; i++) {
+			item = sc.nextInt();
+			itemCount = sc.nextInt();
+			sum += item*itemCount;
+		}
+		if(total==sum) {
+			answer = "Yes";
+		} else {
+			answer = "No";
+		}
+		System.out.println(answer);
+	}
+}
