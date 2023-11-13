@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		int time = 0;
+		int a = 0;
+		for(int i=0; i<s.length(); i++) {
+			a = s.charAt(i);			
+			if(a>=65 && a<=67) {
+				time +=3;
+			} else if(a>=68 && a<=70) {
+				time +=4;
+			} else if(a>=71 && a<=73) {
+				time +=5;
+			} else if(a>=74 && a<=76) {
+				time +=6;
+			} else if(a>=77 && a<=79) {
+				time +=7;
+			} else if(a>=80 && a<=83) {
+				time +=8;
+			} else if(a>=84 && a<=86) {
+				time +=9;
+			} else if(a>=87 && a<=90) {
+				time +=10;
+			}
+		}
+		System.out.println(time);
+	}
+}
