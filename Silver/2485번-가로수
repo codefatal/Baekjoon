@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	static List<Integer> listN = new ArrayList<>();
+	static List<Integer> result = new ArrayList<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	// 주어진 입력정보 받기
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+        int n = Integer.parseInt(bf.readLine());
+        int m =0;
+        Map<Integer, Integer> colonnadeMap = new HashMap<>();
+        
+        int range = 0;
+        Map<Integer, Integer> rangeMap = new HashMap<>();
+        
+        for(int i=0; i<n; i++) {
+        	m = Integer.parseInt(bf.readLine());
+        	colonnadeMap.put(i, m);
+        }
+        
+        for(int i=0; i<colonnadeMap.size()-1; i++) {
+        	rangeMap.put(i, colonnadeMap.get(i+1)-colonnadeMap.get(i));
+        }
+        
+        int a = eucd(rangeMap);
+        int b = 0;
+        int minNum = 0;
+        
+        for(int i=0; i<colonnadeMap.size()-1; i++) {
+        	b = colonnadeMap.get(i+1)-colonnadeMap.get(i);
+        	if(b==a) {
+        		continue;
+        	} else {
+        		minNum += (b-a)/a;
+        	}
+        }
+        
+        System.out.println(minNum);
+    }
+    
+    static int eucd(Map<Integer, Integer> rangeMap) {
+        int result = rangeMap.get(0);
+        for (int i=1; i<rangeMap.size(); i++) {
+            result = eucd(result, rangeMap.get(i));
+        }
+        return result;
+    }
+    
+    static int eucd(int bn, int sn) {
+    	// 큰숫자를 작은숫자로 나눈 나머지를 계산
+        int r = bn % sn;
+        // 나머지가 0이면 작은숫자가 최대공약수이므로 작은숫자 리턴
+        if (r == 0) {
+            return sn;
+        } else {
+        	// 나머지가 0 이상이면 재귀형태로 호출
+            // 이때 파라미터는 작은숫자와 나머지를 넣어줌
+            return eucd(sn, r);
+        }
+    }
+}
