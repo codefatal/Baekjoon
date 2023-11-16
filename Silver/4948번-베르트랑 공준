@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	static Map<Integer, Boolean> map = new HashMap<>();
+	static List<Integer> sieveList = new ArrayList<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+		int num = -1;
+		
+		while(true) {
+			num = Integer.parseInt(bf.readLine());
+			if(num == 0) {
+				break;
+			}
+			sieve(num);
+		}
+        for(int i=0; i<sieveList.size(); i++) {
+        	System.out.println(sieveList.get(i));
+        }
+    }
+    
+    static void sieve(int n){ 
+    	int count = 0;
+    	map.clear();
+        for(int i=2; i<=(2*n); i++){
+            map.put(i, true);
+        }
+        
+        for(int i=2; i<=(2*n); i++){
+            if(map.get(i)){
+                for(int j=(i*2); j<=(2*n); j+=i){
+                    map.replace(j, false);
+                }
+                if(i>=(n+1)) {
+                	count++;
+                }
+            }
+        }
+        sieveList.add(count);
+    }
+    
+}
