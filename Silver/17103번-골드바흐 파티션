@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	static boolean[] decimalArr = new boolean[1000001];
+	static List<Integer> goldbachList = new ArrayList<>();
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+		int n = Integer.parseInt(bf.readLine());
+		int m = 0;
+        
+		decimalArr[0] = true;
+		decimalArr[1] = true;
+		
+        for(int i=2; i<=Math.sqrt(1000000); i++){
+        	if(decimalArr[i]){
+        		continue;
+        	} else {
+                for(int j=(i*2); j<=1000000; j+=i){
+                    decimalArr[j] = true;
+                }
+            }
+        }
+		
+		for(int i=0; i<n; i++) {
+			m = Integer.parseInt(bf.readLine());
+			goldbach(m);
+		}
+		
+        for(int i=0; i<goldbachList.size(); i++) {
+        	System.out.println(goldbachList.get(i));
+        }
+    }
+    
+    static void goldbach(int m){ 
+    	int count = 0;
+        
+    	for(int i=2; i<=m/2; i++) {
+    		if(!decimalArr[i] && !decimalArr[m-i]) {
+    			count++;
+    		}
+        }
+        goldbachList.add(count);
+    }
+    
+}
