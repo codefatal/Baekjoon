@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	
+    public static void main(String[] args) throws NumberFormatException, IOException {
+    	BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+		Stack<Integer> x = new Stack<>();
+		int n = Integer.parseInt(bf.readLine());
+		int m = 0;
+		int l = 0;
+		for(int i=0; i<n; i++) {
+			StringTokenizer st = new StringTokenizer(bf.readLine());
+			m = Integer.parseInt(st.nextToken());
+			
+			switch (m) {
+			case 1:
+				l = Integer.parseInt(st.nextToken());
+				x.push(l);
+				break;
+			case 2:
+				if(!x.empty()) {
+					bw.write(x.pop()+"\n");
+				} else {
+					bw.write(-1+"\n");
+				}
+				break;
+			case 3:
+				bw.write(x.size()+"\n");
+				break;
+			case 4:
+				if(x.empty()) {
+					bw.write(1+"\n");
+				} else {
+					bw.write(0+"\n");
+				}
+				break;
+			case 5:
+				if(!x.empty()) {
+					bw.write(x.peek()+"\n");
+				} else {
+					bw.write(-1+"\n");
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		
+		bw.close();
+    }
+    
+}
